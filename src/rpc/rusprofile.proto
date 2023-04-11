@@ -1,0 +1,22 @@
+syntax = "proto3";
+option go_package = "whs.su/rusprofile/rpc;rpc";
+import "google/api/annotations.proto";
+
+service Rusprofile {
+    rpc Get(InnRequest) returns (ProfileResponse) {
+	option (google.api.http) = {
+	    get: "/search/{INN}";
+	};
+    }
+}
+
+message InnRequest {
+    string INN = 1;
+}
+
+message ProfileResponse {
+    string INN = 1;
+    string KPP = 2;
+    string Company = 3;
+    string Director = 4;
+}
